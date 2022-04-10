@@ -74,6 +74,7 @@ const Post = () => {
         },
       }
     );
+    setComment(false);
   };
   return (
     <div
