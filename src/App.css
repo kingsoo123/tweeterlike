@@ -52,6 +52,7 @@
   border-radius: 8px;
   color: #fff;
   cursor: pointer;
+  border: none;
 }
 
 table {
@@ -69,4 +70,20 @@ th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+.comment_inp {
+  width: 50%;
+  height: 45px;
+  border: 1px solid darkblue;
+  border-radius: 8px;
+}
+
+.comment_but {
+  height: 45px;
+  background-color: darkblue;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
 }

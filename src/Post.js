@@ -4,6 +4,7 @@ import axios from "axios";
 const Post = () => {
   const [twit, setTwit] = useState("");
   const [post, setPost] = useState([]);
+  const [comment, setComment] = useState(false);
   let data = {
     twit: twit,
   };
@@ -25,7 +26,6 @@ const Post = () => {
         },
       })
       .then((res) => {
-        console.log(res.data.data);
         setPost(res.data.data);
       });
   }, [twit]);
@@ -37,7 +37,20 @@ const Post = () => {
       },
     });
 
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 4000);
+  };
+
+  const commentPost = (id) => {
+    setComment(!false);
+    axios
+      .get(`https://twiteeex.herokuapp.com/v1/comments/${id}`, {
+        headers: {
+          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => console.log(res));
   };
 
   return (
@@ -84,9 +97,9 @@ const Post = () => {
               <th>Name</th>
               <th>Post</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
-
           <tbody>
             {post.map((item, i) => {
               return (
@@ -103,11 +116,40 @@ const Post = () => {
                       ""
                     )}
                   </td>
+                  <td>
+                    <button onClick={() => commentPost(item.twit_id)}>
+                      Comment
+                    </button>
+                  </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+
+        {comment === true ? (
+          <div
+            style={{
+              width: 1100,
+              height: 60,
+              display: "flex",
+              justifyContent: "flex-start",
+              marginTop: "5rem",
+            }}
+          >
+            <input
+              placeholder="Type a post..."
+              className="comment_inp"
+              onChange={(e) => setTwit(e.target.value)}
+            />
+            &nbsp;
+            <button className="comment_but" onClick={PostTwit}>
+              Comment
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
