@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -80,6 +76,7 @@ tr:nth-child(even) {
 }
 
 .comment_but {
+  width: 50%;
   height: 45px;
   background-color: darkblue;
   border-radius: 8px;
