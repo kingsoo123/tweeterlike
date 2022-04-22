@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Post from "./Post";
-import Auth from "./Auth";
+import ProjectComp from "./Auth";
 
 function App() {
   return (
@@ -9,8 +8,7 @@ function App() {
       <div className="container">
         <Router>
           <Routes>
-            <Route path="" element={<Auth />} />
-            <Route path="posts" element={<Post />} />
+            <Route path="" element={<ProjectComp />} />
           </Routes>
         </Router>
       </div>
